@@ -23,7 +23,11 @@ const userShema = new Schema({
     type: String,
     enum: ["custumer", "admin"],
     default: "custumer"
+  },
+  otp : {
+    type :  Number
   }
+
 });
 const Users = mongoose.model("Users", userShema);
 module.exports = Users;
