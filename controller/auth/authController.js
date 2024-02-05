@@ -117,6 +117,7 @@ const verifyOtp = async(req,res) => {
       })
   }
   else{
+    userExist[0].isOtpVerified= true
     userExist[0].otp = undefined;
     await userExist[0].save();
     res.status(200).json({
@@ -144,7 +145,13 @@ const resetPassword = async(req,res) => {
       message:"Email not register"
     })
   }
+  if(userExist[0].isOtpVerified !== true){
+    res.status(403).json({
+      message:"you are not verified to perform this action"
+    })
+  }
   userExist[0].password = bcrypt.hashSync(newPassword,10);
+  userExist[0].isOtpVerified= false
   await userExist[0].save();
   res.status(200).json({
     message:"password changed successfully"

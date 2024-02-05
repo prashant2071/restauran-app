@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userShema = new Schema({
   email: {
     type: String,
-    require: [true, "Email is required"]
+    require: [true, "Email is required"],
+    unique:true
   },
   username: {
     type: String,
@@ -26,6 +27,10 @@ const userShema = new Schema({
   },
   otp : {
     type :  Number
+  },
+  isOtpVerified : {
+    type : Boolean,
+    default : false
   }
 
 });
