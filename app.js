@@ -7,6 +7,7 @@ const Users = require("./model/usermodel");
 const morgan = require("morgan");
 const  path = require("path");
 const authRoute = require('./routes/authRoute') 
+const productRoute = require("./routes/productRoute")
 connectDatabase();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,9 @@ app.get("/", (req, res) => {
 });
 
 // auth route
-app.use("/api",authRoute)
+app.use("/api",authRoute);
+app.use("/api",productRoute);
+
 
 //listening server
 app.listen(PORT, (err, done) => {

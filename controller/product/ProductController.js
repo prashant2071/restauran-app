@@ -6,11 +6,16 @@ exports.createProduct = async (req, res) => {
       message: "please provide name,description,stockQty,price,status",
     });
   }
-  await Products.create({
+ const product =  await Products.create({
     name,
     description,
     stockQty,
     price,
     status,
   });
+  res.status(200).json({
+    data:product,
+    message:"product created successfully"
+  })
 };
+

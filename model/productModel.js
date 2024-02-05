@@ -22,6 +22,8 @@ const productSchema = new Schema({
        type : String,
        enum : ["available","unavailable"]  
     }
+},{
+    timestamps:true
 })
-const Products = mongoose.model("Products", userShema);
+const Products = mongoose.model("Products", productSchema);
 module.exports = Products;
